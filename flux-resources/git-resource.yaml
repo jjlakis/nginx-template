@@ -1,0 +1,11 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: h1
+spec:
+  interval: 24h
+  url: ssh://git@gl.lakis.io/gitops/h1.git
+  secretRef:
+    name: gitlab-key
+  ref:
+    branch: master
