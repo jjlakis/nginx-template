@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx
@@ -6,11 +6,20 @@ metadata:
     app: nginx
     app.kubernetes.io/name: nginx
 spec:
+  tls:
+  - hosts:
+      - test.s0.lakis.eu
+    secretName: nginx-cert
   rules:
-    - host: "nginx-test.lakis.tech"
+    - host: "test.s0.lakis.eu"
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: nginx
-              servicePort: 80
+              service:
+                name: nginx
+                port:
+                  number: 80
+
+
