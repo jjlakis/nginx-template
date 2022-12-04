@@ -30,11 +30,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /index.html
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /index.html
               port: http
           volumeMounts:
            - name: nginx
